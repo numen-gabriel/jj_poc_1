@@ -1,0 +1,5 @@
+###
+get https://port4004-workspaces-ws-8rvj8.us10.trial.applicationstudio.cloud.sap/odata/v4/catalog/docPost1(token='123',content1='ABC',content2='xyz')
+
+###
+post https://port4004-workspaces-ws-8rvj8.us10.trial.applicationstudio.cloud.sap/odata/v4/catalog/docPost(token='123',content1='ABC',content2='xyz')
