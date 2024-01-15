@@ -10,7 +10,7 @@
   "attributes": [],
   "role-templates": [
     {
-      "name": "admin", 
+      "name": "admin",
       "description": "generated",
       "scope-references": [
         "$XSAPPNAME.admin"
