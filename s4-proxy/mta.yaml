@@ -23,7 +23,15 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: s4-proxy-auth
-
+    properties:
+      CORS:
+        - uriPattern: .
+          allowedMethods:
+            - GET
+            - POST
+          allowedOrigin:
+            - host: '*'
+            
   - name: s4-proxy
     type: approuter.nodejs
     path: app/

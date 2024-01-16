@@ -7,9 +7,13 @@ service CatalogService {
             content2: String
         ) returns String;
 
+    type Content1 {
+        blob: String;
+        filename: String;
+    }
     action docPost (
             token: String, 
-            content1: String, 
+            content1: Content1, 
             content2: String
         ) returns String;
 }

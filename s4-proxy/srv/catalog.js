@@ -1,4 +1,12 @@
 module.exports = (srv)=>{
+    /*
+    srv.after("*", async (each, req) => {
+        if (req.res) {
+            req.res.set("Access-Control-Allow-Origin", "*");
+        }
+    });
+    */
+
     srv.on ('getHello', async (req)=> {
         let helloString = `Hello ${req.data.to}!!`;
 
