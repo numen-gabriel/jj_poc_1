@@ -15,8 +15,9 @@ app.get('/', function (req, res) {
 app.post('/docPost_json', async function (req, res) {
     console.log(req.body)
     let params = {
-        param1: req.body.param1,
-        param2: req.body.param2
+        token: req.body.token,
+        content1: req.body.content1,
+        content2: req.body.content2
     }
 
     console.log(params);
