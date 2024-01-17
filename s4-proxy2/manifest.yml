@@ -1,0 +1,5 @@
+---
+applications:
+- name: s4-proxy-srv
+  buildpacks:
+    - nodejs_buildpack
