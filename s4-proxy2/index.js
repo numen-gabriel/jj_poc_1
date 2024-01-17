@@ -20,10 +20,12 @@ app.post('/docPost_json', async function (req, res) {
     res.send(req.body);
 })
 
-app.post('/docPost', upload.none(), async function (req, res) {
+app.post('/docPost', upload.single('file'), async function (req, res) {
   const formData = req.body;
   console.log('form data', formData);
+  console.log(req.file)
   res.sendStatus(200);
 })
 
 app.listen(8080)
+console.log('Listening on port 8080')
