@@ -8,7 +8,7 @@ service CatalogService {
         ) returns String;
 
     type Content1 {
-        blob: String;
+        blob: LargeBinary;
         filename: String;
     }
     action docPost (

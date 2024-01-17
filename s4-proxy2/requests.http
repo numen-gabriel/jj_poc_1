@@ -1,0 +1,12 @@
+###
+get http://localhost:4004/
+
+
+###
+post http://localhost:4004/docPost/
+Content-Type: application/json
+
+{
+    "param1":"value1",
+    "param2":"value2"
+}
