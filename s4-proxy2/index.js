@@ -27,7 +27,8 @@ app.post('/docPost_json', async function (req, res) {
 
 app.post('/docPost', upload.single('file'), async function (req, res) {
   const formData = req.body;
-  console.log('form data', formData);
+  console.log('req.body=', formData);
+  console.log('req.file=', req.file);
 
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({ response: "OK!" }));
