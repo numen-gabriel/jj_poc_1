@@ -135,4 +135,80 @@ let f3 = async () => {
     //console.log(response)
 }
 
-f3()
+let f4 = async () => {
+
+    //let url = "https://s4-proxy-srv.cfapps.us10-001.hana.ondemand.com/docPost";
+    let url = "http://localhost:8080/docPost"
+    let tokenDIE = "abcde";
+    let filename = 'pedido.pdf';
+    let options = {
+        extraction: {
+            "headerFields": [
+                "documentNumber",
+                "taxId",
+                "purchaseOrderNumber",
+                "shippingAmount",
+                "netAmount",
+                "senderAddress",
+                "senderName",
+                "grossAmount",
+                "currencyCode",
+                "receiverContact",
+                "documentDate",
+                "taxAmount",
+                "taxRate",
+                "receiverName",
+                "receiverAddress"
+            ],
+            "lineItemFields": [
+                "description",
+                "netAmount",
+                "quantity",
+                "unitPrice",
+                "materialNumber"
+            ]
+        },
+        clientId: "default",
+        documentType: "invoice",
+        receivedDate: "2023-12-14",
+        enrichment: {}
+    };
+
+    let blobPath = '../TesteBenitez.pdf';
+    let file = fs.statSync(blobPath);
+    let blob = file.blob();
+    //const fileSizeInBytes = blob.size;    
+
+    console.log("Blob="+blob)
+
+    let formData = new FormData();
+
+    //  Append tokenDIE into the formData
+    formData.append('token', tokenDIE);
+
+    //  Append upload details into the formData
+    formData.append('file', blob, filename);
+
+    //  Append options parameters into the formData
+    formData.append('options', JSON.stringify(options))
+
+    // Request options
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        body: formData
+    }
+
+    //console.log('checkpoint: before sending request')
+
+    // Call Express.js service
+    let response = fetch(url, requestOptions);
+
+    console.log(response.value);
+
+    //console.log(response)
+}
+
+f4()

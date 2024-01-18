@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload Example</title>
+</head>
+<body>
+
+  <input type="file" id="fileInput" accept=".pdf">
+  <button onclick="uploadFile()">Upload File</button>
+
+  <script>
+    function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const serviceUrl = 'http://localhost:8080/docPost';
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch(serviceUrl, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          // Add any additional headers if needed
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Handle the response from the server
+        console.log('Response from server:', data);
+      })
+      .catch(error => {
+        console.error('Error uploading file:', error.message);
+      });
+    }
+  </script>
+
+</body>
+</html>
