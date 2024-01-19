@@ -1,0 +1,14 @@
+#clientSecret=<< Existing password/certificate removed on export >>
+#
+#Thu Jan 18 20:00:57 UTC 2024
+Type=HTTP
+clientId=sb-e6712c16-5e0b-4542-9565-c278aea91e0a\!b221847|dox-xsuaa-std-trial\!b10844
+HTML5.DynamicDestination=true
+Authentication=OAuth2ClientCredentials
+Name=doc-info-extraction
+WebIDEEnabled=true
+tokenServiceURL=https\://1961a60ctrial.authentication.us10.hana.ondemand.com/oauth/token
+ProxyType=Internet
+URL=https\://aiservices-trial-dox.cfapps.us10.hana.ondemand.com/document-information-extraction/v1/
+tokenServiceURLType=Dedicated
+AppgyverEnabled=true

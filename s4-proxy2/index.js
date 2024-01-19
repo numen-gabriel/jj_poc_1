@@ -8,27 +8,20 @@ app.use(cors());
 const multer = require('multer');
 const upload = multer();
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
-
-app.post('/docPost_json', async function (req, res) {
-    console.log(req.body)
-    let params = {
-        token: req.body.token,
-        content1: req.body.content1,
-        content2: req.body.content2
-    }
-
-    console.log(params);
-
-    res.send(req.body);
-})
+const {postDocumentJobs} = require("./modules/Die");
 
 app.post('/docPost', upload.single('file'), async function (req, res) {
-  const formData = req.body;
-  console.log('req.body=', formData);
-  console.log('req.file=', req.file);
+  let oData = {
+    file    : req.file,
+    options : req.body.options,
+    token   : req.body.token
+  }
+
+  console.log('req.body.options=', oData.options);
+  console.log('req.file=', oData.file);
+
+  let response = await postDocumentJobs(oData.file,oData.options,oData.token);
+  console.log("response no index.js="+response);
 
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({ response: "OK!" }));

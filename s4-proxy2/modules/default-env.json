@@ -1,0 +1,37 @@
+{
+	"VCAP_SERVICES": {
+		"destination": [
+			{
+				"label": "destination",
+				"provider": null,
+				"plan": "lite",
+				"name": "s4-proxy-dest-service",
+				"tags": [
+					"destination",
+					"conn",
+					"connsvc"
+				],
+				"instance_guid": "b2ad8751-9ec4-41b2-b5c2-1c0e9a512508",
+				"instance_name": "s4-proxy-dest-service",
+				"binding_guid": "24b930b2-8a13-4e92-b7b5-cc834474d123",
+				"binding_name": null,
+				"credentials": {
+					"tenantmode": "dedicated",
+					"clientid": "sb-cloneb2ad87519ec441b2b5c21c0e9a512508!b129801|destination-xsappname!b62",
+					"credential-type": "binding-secret",
+					"xsappname": "cloneb2ad87519ec441b2b5c21c0e9a512508!b129801|destination-xsappname!b62",
+					"clientsecret": "24b930b2-8a13-4e92-b7b5-cc834474d123$4GgGIQnUbjSseCsATP1z5ysLRAEmqAHp0rJ-f81j6P0=",
+					"uri": "https://destination-configuration.cfapps.us10.hana.ondemand.com",
+					"url": "https://numenit-application-sandbox.authentication.us10.hana.ondemand.com",
+					"uaadomain": "authentication.us10.hana.ondemand.com",
+					"instanceid": "b2ad8751-9ec4-41b2-b5c2-1c0e9a512508",
+					"verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndC9z0T0hCUr2da8/FlP\ngFH9TVOdqVxqAzR+2OjpjyPm1JClRe3m2tS6W/OaHI5u3/tn5hgMdJOF7GW0ugNq\nqg8bLeiL14nzE8oal5sJyCPe2gRtp9KrevjROC5ek/hVSj75H+WY/QWnXgi4mijB\nvVgvwW0xOzIFrTL9MJBFMqmFaNnU7Vm4hBc/L/VrV4NLgzChGc0qZTUGYbcpdIqg\nA6ufHclVD1DmyloVXUS/qE1wM1ITF+HrGH/6kK5houinfLvGR4cQBG2YSrylazz9\nNRajuysdeZ+R130/ryqXQYUXhIJB6nhgyzkFbZ8x/ZRYPRhpjfmfM/Ts7Lhukn1c\niQIDAQAB\n-----END PUBLIC KEY-----",
+					"identityzone": "numenit-application-sandbox",
+					"tenantid": "fb0e7ffd-f537-458b-982f-be8b31edf0cf"
+				},
+				"syslog_drain_url": null,
+				"volume_mounts": []
+			}
+		]
+	}
+}
