@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "6c251373-d18a-4552-9c67-5ac857bc4aa5",
+		"name": "JJ_PoC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4732069"
+	},
+	"item": [
+		{
+			"name": "https://org-numenit-application-sandbox-sandbox-s4-proxy-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/catalog/docPost",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "s4-proxy-org-numenit-application-sandbox-sandbox!t129801.admin",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "FGp4DxB7QBRcjrpRaprqZFbI43c=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "sb-s4-proxy-org-numenit-application-sandbox-sandbox!t129801",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://numenit-application-sandbox.authentication.us10.hana.ondemand.com/oauth/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "NumenSandbox",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Strato04",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "eric.cassaro@numenit.com",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "password_credentials",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\":\"123\",\r\n    \"content1\": {\r\n        \"blob\": \"ABC\",\r\n        \"filename\": \"pedido.pdf\"\r\n    },\r\n    \"content2\":\"xyz...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://org-numenit-application-sandbox-sandbox-s4-proxy-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/catalog/docPost",
+					"protocol": "https",
+					"host": [
+						"org-numenit-application-sandbox-sandbox-s4-proxy-srv",
+						"cfapps",
+						"us10-001",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"odata",
+						"v4",
+						"catalog",
+						"docPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post srv na nuvem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "options",
+							"value": "{\n\"extraction\": {\n\"headerFields\": [\n\"documentNumber\" \n],\n\"lineItemFields\": [\n\"description\",\n\"netAmount\",\n\"quantity\",\n\"unitPrice\",\n\"materialNumber\",\n\"unitOfMeasure\"\n]\n},\n\"clientId\": \"default\",\n\"documentType\": \"purchaseOrder\",\n\"receivedDate\": \"2020-02-17\",\n\"enrichment\": {\n\"sender\": {\n\"top\": 5,\n\"type\": \"businessEntity\",\n\"subtype\": \"supplier\"\n},\n\"employee\": {\n\"type\": \"employee\"\n}\n}\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/ericc/Desktop/envs/jj_poc/jj_poc_1/TesteBenitez.pdf"
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vOTY5MjFlNzd0cmlhbC5hdXRoZW50aWNhdGlvbi51czEwLmhhbmEub25kZW1hbmQuY29tL3Rva2VuX2tleXMiLCJraWQiOiJkZWZhdWx0LWp3dC1rZXktMjY1NmI3NTYzZiIsInR5cCI6IkpXVCIsImppZCI6ICJ4K0p5bXE3Q3RNQ29aSUZoazlsMUljbUg5V1NURGdoemNMM1cxZTlkYnpvPSJ9.eyJqdGkiOiIxZDFiZmRjMGI2ZTc0NDZjYjY0MDMyY2MwZWJhNWM4YyIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiI5MjQ5N2Q1OS0xODE0LTQ3M2QtOTJmNS05MTNhY2ZjZTI2YzUiLCJ6ZG4iOiI5NjkyMWU3N3RyaWFsIiwic2VydmljZWluc3RhbmNlaWQiOiJlMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYifSwic3ViIjoic2ItZTA0NzcyYWEtY2U0MC00ZTdjLWFmNWMtNWE3MGIzYWNkYTA2IWIyMzQwMDB8ZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJhdXRob3JpdGllcyI6WyJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5zY2hlbWEud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kb2N1bWVudC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnRlbXBsYXRlLnJlYWQiLCJ1YWEucmVzb3VyY2UiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5ydWxlcy53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnRlbXBsYXRlLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS1leHBvcnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudC5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0LndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmlkZW50aWZpZXIud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZWNobmljYWxzY29wZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNvbmZpZy5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY2FwYWJpbGl0aWVzLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kYXRhLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jb25maWcud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhLnJlYWQiXSwic2NvcGUiOlsiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuaWRlbnRpZmllci5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZS5yZWFkIiwidWFhLnJlc291cmNlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQucnVsZXMud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0LnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jbGllbnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRvY3VtZW50LnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kYXRhLWV4cG9ydC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudHJhaW5pbmctZGF0YS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnNjaGVtYS5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudGVjaG5pY2Fsc2NvcGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jbGllbnQud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jb25maWcucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNhcGFiaWxpdGllcy5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY29uZmlnLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudHJhaW5pbmctZGF0YS5yZWFkIl0sImNsaWVudF9pZCI6InNiLWUwNDc3MmFhLWNlNDAtNGU3Yy1hZjVjLTVhNzBiM2FjZGEwNiFiMjM0MDAwfGRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0IiwiY2lkIjoic2ItZTA0NzcyYWEtY2U0MC00ZTdjLWFmNWMtNWE3MGIzYWNkYTA2IWIyMzQwMDB8ZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJhenAiOiJzYi1lMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYhYjIzNDAwMHxkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NCIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiZTZjZjBiODMiLCJpYXQiOjE3MDU2NjM2NDEsImV4cCI6MTcwNTcwNjg0MSwiaXNzIjoiaHR0cHM6Ly85NjkyMWU3N3RyaWFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vb2F1dGgvdG9rZW4iLCJ6aWQiOiI5MjQ5N2Q1OS0xODE0LTQ3M2QtOTJmNS05MTNhY2ZjZTI2YzUiLCJhdWQiOlsiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY2FwYWJpbGl0aWVzIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhIiwidWFhIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJzYi1lMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYhYjIzNDAwMHxkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0IiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQucnVsZXMiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY29uZmlnIl19.qOWnsKsGQSDnHjgA952qUvBFvTFcPyGnaUS-4Pq7iBXRKag0qrA6nui9-n2Sj0PoeRstKxWhkTYAZC4yWMdUgLboy-WTfWc2ap91enB7YgX7TmocNTN-zpfuqKSMMEdvW1IxmGatBxvQgmDsk_jIAVBxxX7qPARkqyJ_TwWGjssgoJIsy4yyj76gP1n4FyxkSbXs6bmeTSr6yPQ4yDzmZUx2hqPJorCWB4NJReYmR0YrkYlFtDSvlTU6CfIa-beNmvfsLcaF_3kswhjyjR3_UAQ7vFC_7Z95s2Gt5ugizmhO3oPSP7nkhQUySKN0ri2tpUJfvavl3cwZE6FlC2lLBw",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://s4-proxy-srv.cfapps.us10-001.hana.ondemand.com/docPost",
+					"protocol": "https",
+					"host": [
+						"s4-proxy-srv",
+						"cfapps",
+						"us10-001",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"docPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DIE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vOTY5MjFlNzd0cmlhbC5hdXRoZW50aWNhdGlvbi51czEwLmhhbmEub25kZW1hbmQuY29tL3Rva2VuX2tleXMiLCJraWQiOiJkZWZhdWx0LWp3dC1rZXktMjY1NmI3NTYzZiIsInR5cCI6IkpXVCIsImppZCI6ICJBeGJoOFN5ZXF6eGxYaG9pbXBrMzZzSXpHQ29MeEFYQ1JUY3d6bGVvMFp3PSJ9.eyJqdGkiOiJmZDUxMjM0MzNhNjQ0N2NiYWY2ODYwOTIxMGY5ZjYyYiIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiI5MjQ5N2Q1OS0xODE0LTQ3M2QtOTJmNS05MTNhY2ZjZTI2YzUiLCJ6ZG4iOiI5NjkyMWU3N3RyaWFsIiwic2VydmljZWluc3RhbmNlaWQiOiJlMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYifSwic3ViIjoic2ItZTA0NzcyYWEtY2U0MC00ZTdjLWFmNWMtNWE3MGIzYWNkYTA2IWIyMzQwMDB8ZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJhdXRob3JpdGllcyI6WyJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5zY2hlbWEud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kb2N1bWVudC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnRlbXBsYXRlLnJlYWQiLCJ1YWEucmVzb3VyY2UiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5ydWxlcy53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnRlbXBsYXRlLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS1leHBvcnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudC5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0LndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmlkZW50aWZpZXIud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZWNobmljYWxzY29wZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNvbmZpZy5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY2FwYWJpbGl0aWVzLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kYXRhLnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jb25maWcud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhLnJlYWQiXSwic2NvcGUiOlsiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuaWRlbnRpZmllci5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZS5yZWFkIiwidWFhLnJlc291cmNlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQucnVsZXMud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0LnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jbGllbnQucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRvY3VtZW50LnJlYWQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5kYXRhLWV4cG9ydC53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudHJhaW5pbmctZGF0YS53cml0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LnNjaGVtYS5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudGVjaG5pY2Fsc2NvcGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jbGllbnQud3JpdGUiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5jb25maWcucmVhZCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNhcGFiaWxpdGllcy5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZGF0YS5yZWFkIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY29uZmlnLndyaXRlIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQudHJhaW5pbmctZGF0YS5yZWFkIl0sImNsaWVudF9pZCI6InNiLWUwNDc3MmFhLWNlNDAtNGU3Yy1hZjVjLTVhNzBiM2FjZGEwNiFiMjM0MDAwfGRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0IiwiY2lkIjoic2ItZTA0NzcyYWEtY2U0MC00ZTdjLWFmNWMtNWE3MGIzYWNkYTA2IWIyMzQwMDB8ZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJhenAiOiJzYi1lMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYhYjIzNDAwMHxkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NCIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiZTZjZjBiODMiLCJpYXQiOjE3MDU1ODkxNTMsImV4cCI6MTcwNTYzMjM1MywiaXNzIjoiaHR0cHM6Ly85NjkyMWU3N3RyaWFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vb2F1dGgvdG9rZW4iLCJ6aWQiOiI5MjQ5N2Q1OS0xODE0LTQ3M2QtOTJmNS05MTNhY2ZjZTI2YzUiLCJhdWQiOlsiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuc2NoZW1hIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY2FwYWJpbGl0aWVzIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuZG9jdW1lbnQiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50ZW1wbGF0ZSIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC50cmFpbmluZy1kYXRhIiwidWFhIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQiLCJzYi1lMDQ3NzJhYS1jZTQwLTRlN2MtYWY1Yy01YTcwYjNhY2RhMDYhYjIzNDAwMHxkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmNsaWVudCIsImRveC14c3VhYS1zdGQtdHJpYWwhYjEwODQ0LmRhdGEtZXhwb3J0IiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQucnVsZXMiLCJkb3gteHN1YWEtc3RkLXRyaWFsIWIxMDg0NC5pZGVudGlmaWVyIiwiZG94LXhzdWFhLXN0ZC10cmlhbCFiMTA4NDQuY29uZmlnIl19.WaLgaCom7gRPkP9WJVeLg95PSrZFzPrNWyoUnyaa6J5xOLavqAh4dOB5Ppuwu96Dlm3CpD77bSwKauYVPTu_8huKAK3ReJ2e5ZYeTobuCJazarUpJ2HAw7mySNVoxGlzW2jhUg9j74JaIs_gnRL7FbCI3hsJwaz5q_MGpKLszJRgRSqmwaNa7WapRh5GMQd_BlkbRf-67wNu1lJdw9ay3KlvoVrUbv5n3Hs42xwzinn-KV9Z8MGEBIPbQecMBOq1JBEQSmsIUuW9cqGuoRHDxcZNJ0A4bJN8p5ArvUyABeY1OjKBqc7D-yLZnWCIBlXl8puw628rBpEm6iRmrJ6jNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/ericc/Desktop/envs/jj_poc/jj_poc_1/TesteBenitez.pdf"
+						},
+						{
+							"key": "options",
+							"value": "{\n  \"extraction\": {\n    \"headerFields\": [\n      \"documentNumber\"      \n    ],\n    \"lineItemFields\": [\n      \"description\",\n      \"netAmount\",\n      \"quantity\",\n      \"unitPrice\",\n      \"materialNumber\",\n      \"unitOfMeasure\"\n    ]\n  },\n  \"clientId\": \"default\",\n  \"documentType\": \"purchaseOrder\",\n  \"receivedDate\": \"2020-02-17\",\n  \"enrichment\": {\n    \"sender\": {\n      \"top\": 5,\n      \"type\": \"businessEntity\",\n      \"subtype\": \"supplier\"\n    },\n    \"employee\": {\n      \"type\": \"employee\"\n    }\n  }\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://aiservices-trial-dox.cfapps.us10.hana.ondemand.com/document-information-extraction/v1/document/jobs",
+					"protocol": "https",
+					"host": [
+						"aiservices-trial-dox",
+						"cfapps",
+						"us10",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"document-information-extraction",
+						"v1",
+						"document",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "557c7d2f-235e-4d94-b14e-1b9a68a0a876$LZRp2U228SQU1n_1SdPtx9YHzIv-6ZzTooiMq_-zKSk=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sb-e04772aa-ce40-4e7c-af5c-5a70b3acda06!b234000|dox-xsuaa-std-trial!b10844",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://96921e77trial.authentication.us10.hana.ondemand.com/oauth/token?grant_type=client_credentials",
+					"protocol": "https",
+					"host": [
+						"96921e77trial",
+						"authentication",
+						"us10",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
