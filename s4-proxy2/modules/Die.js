@@ -11,14 +11,14 @@ async function postDocumentJobs(iFile,iOptions,iToken) {
         let response = await executeHttpRequest(
           {
             //url: "https://aiservices-trial-dox.cfapps.us10.hana.ondemand.com/document-information-extraction/v1",
-            destinationName: "doc-info-extraction-post-no-auth",
+            destinationName: "doc-info-extraction-post",
           },
           {
             method: "post",
             url: "/document/jobs",
             headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': sToken
+              'Content-Type': 'multipart/form-data'
+              //'Authorization': sToken
             },
             data: formData
           }
