@@ -1,37 +1,38 @@
 const { executeHttpRequest } = require("@sap-cloud-sdk/http-client");
+const { response } = require("express");
 
 async function postDocumentJobs(iFile,iOptions,iToken) {
     try {
-        let formData = new FormData();
-        formData.append('file', iFile);
+
+      let PDFBlob = new Blob([iFile.buffer], { type: "application/pdf" });
+
+      let formData = new FormData();
         formData.append('options', iOptions);
+        formData.append('file', PDFBlob, iFile.originalname);
 
         let sToken = "Bearer " + iToken;
 
-        let response = await executeHttpRequest(
+        let dieApiResult = await executeHttpRequest(
           {
-            //url: "https://aiservices-trial-dox.cfapps.us10.hana.ondemand.com/document-information-extraction/v1",
-            destinationName: "doc-info-extraction-post",
+            destinationName: "doc-info-extraction-post"
           },
           {
             method: "post",
-            url: "/document/jobs",
+            url: "document/jobs",
             headers: {
-              'Content-Type': 'multipart/form-data'
-              //'Authorization': sToken
+              'Accept': '*/*'
             },
             data: formData
           }
         );
-  
-        console.log("response no Die.js="+response);
-        return response;
+        
+        return dieApiResult.data;
+
       } catch (error) {
-        console.log('Catch!! Deu erro na request!!!');
         console.log(error);
       }
 }
 
-module.exports = {
+module.exports = {    
     postDocumentJobs: postDocumentJobs
 }

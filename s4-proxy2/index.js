@@ -17,15 +17,13 @@ app.post('/docPost', upload.single('file'), async function (req, res) {
     token   : req.body.token
   }
 
-  console.log('req.body.options=', oData.options);
-  console.log('req.file=', oData.file);
+  const response = await postDocumentJobs(oData.file,oData.options,oData.token).then(responseDie => {
 
-  let response = await postDocumentJobs(oData.file,oData.options,oData.token);
-  console.log("response no index.js="+response);
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(responseDie));
 
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({ response: "OK!" }));
+  });
+  
 })
 
 app.listen(8080)
-console.log('Listening on port 8080')
