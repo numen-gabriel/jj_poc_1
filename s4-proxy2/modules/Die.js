@@ -1,24 +1,18 @@
 const { executeHttpRequest } = require("@sap-cloud-sdk/http-client");
 const { response } = require("express");
 
-async function postDocumentJobs(iFilepath,iFilename,iOptions,iToken) {
+async function postDocumentJobs(iFile,iOptions) {
     try {
       
-      let PDFBlob = new Blob([iFilepath], { type: "application/pdf" });
-
-      // Build blob of pdf file
-      //let PDFBlob = await fetch(iFilepath).then(r => r.blob());
+      let PDFBlob = new Blob([iFile.buffer], { type: "application/pdf" });
 
       let formData = new FormData();
         formData.append('options', iOptions);
-        formData.append('file', PDFBlob, iFilename);
-
-        let sToken = "Bearer " + iToken;
+        formData.append('file', PDFBlob, iFile.originalname);
 
         let dieApiResult = await executeHttpRequest(
           {
             destinationName: "doc-info-extraction-post"
-            //url: "https://en15ronw8wa1l.x.pipedream.net/"
           },
           {
             method: "post",
